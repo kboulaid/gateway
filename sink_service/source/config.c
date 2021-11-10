@@ -14,7 +14,7 @@
 #include "wpc.h"
 
 #define LOG_MODULE_NAME "Config"
-#define MAX_LOG_LEVEL DEBUG_LOG_LEVEL
+#define MAX_LOG_LEVEL INFO_LOG_LEVEL
 #include "logger.h"
 
 /** Structure to hold unmodifiable configs from node */
@@ -121,7 +121,7 @@ static int get_firmware_version(sd_bus * bus,
                                     m_sink_config.version,
                                     sizeof(m_sink_config.version));
 
-    LOGD("Version Firmware is %d.%d.%d.%d\n",
+    LOGI("Version Firmware is %d.%d.%d.%d\n",
          m_sink_config.version[0],
          m_sink_config.version[1],
          m_sink_config.version[2],
@@ -330,7 +330,7 @@ static int set_stack_state(sd_bus_message * m, void * userdata, sd_bus_error * e
         WPC_set_autostart(1);
         if (res == APP_RES_OK)
         {
-            LOGD("Stack started manually\n");
+            LOGI("Stack started manually\n");
             send_dbus_signal("StackStarted");
         }
     }
@@ -661,7 +661,7 @@ static void on_stack_boot_status(uint8_t status)
 
     if (status == 0)
     {
-        LOGD("Stack restarted\n");
+        LOGI("Stack restarted\n");
         send_dbus_signal("StackStarted");
     }
 }

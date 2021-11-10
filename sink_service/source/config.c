@@ -193,7 +193,7 @@ static int read_key(sd_bus * bus,
     return 0;
 }
 
-typedef app_res_e (*set_key_f)(uint8_t key[16]);
+typedef app_res_e (*set_key_f)(const uint8_t key[16]);
 
 /**
  * \brief   Global function to set a key (cipher or authen)
